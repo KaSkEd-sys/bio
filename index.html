@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Моё Био</title>
+
+  <!-- Подключение иконок Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      font-family: "Segoe UI", sans-serif;
+      overflow: hidden;
+      background: black;
+      position: relative;
+    }
+
+    video.bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+
+    .glass-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255 255 255 / 0.1);
+      border-radius: 20px;
+      padding: 30px 20px;
+      width: 320px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 0 30px rgba(0 0 0 / 0.4);
+      text-align: center;
+      animation: flyIn 1s ease-out forwards;
+      opacity: 0;
+      z-index: 10;
+    }
+
+    @keyframes flyIn {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -70%);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(255 255 255 / 0.8);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: white;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #eee;
+      font-size: 16px;
+    }
+
+    .socials {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 25px;
+      opacity: 0;
+      animation: slideUp 1.2s ease-out 1s forwards;
+      z-index: 10;
+    }
+
+    .socials a {
+      color: white;
+      font-size: 35px;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+
+    .socials a:hover {
+      transform: scale(1.2);
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+
+    /* Водопад слева - слова падают сверху вниз */
+    .waterfall-left {
+      position: fixed;
+      top: 0;
+      left: 10px;
+      width: 150px;
+      height: 100vh;
+      overflow: visible;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .waterfall-left span {
+      position: absolute;
+      left: 0;
+      color: rgba(255 255 255 / 0.15);
+      font-size: 16px;
+      font-weight: 600;
+      white-space: nowrap;
+      animation-name: fallDown;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      user-select: none;
+    }
+
+    @keyframes fallDown {
+      0% {
+        top: -30px;
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        top: 100vh;
+        opacity: 1;
+      }
+      100% {
+        top: 110vh;
+        opacity: 0;
+      }
+    }
+
+    /* Водопад снизу - слова движутся слева направо */
+    .waterfall-bottom {
+      position: fixed;
+      bottom: 10px;
+      left: 0;
+      width: 100vw;
+      height: 40px;
+      overflow: visible;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .waterfall-bottom span {
+      position: absolute;
+      bottom: 0;
+      color: rgba(255 255 255 / 0.15);
+      font-size: 16px;
+      font-weight: 600;
+      white-space: nowrap;
+      animation-name: slideRight;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      user-select: none;
+    }
+
+    @keyframes slideRight {
+      0% {
+        left: -150px;
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        left: 100vw;
+        opacity: 1;
+      }
+      100% {
+        left: 110vw;
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Видео-фон -->
+<video class="bg" autoplay muted loop playsinline>
+  <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/mp4" />
+</video>
+
+
+  <!-- Водопады слов -->
+  <div class="waterfall-left"></div>
+  <div class="waterfall-bottom"></div>
+
+  <!-- Главное окно -->
+  <div class="glass-box">
+    <img src="avatar.jpg" alt="Avatar" class="avatar" />
+    <h1>kasked</h1>
+    <p>Python, html, css programmer (заказать такой же сайт в лс @KACKA_CHOC)</p>
+  </div>
+
+  <!-- Социальные сети -->
+  <div class="socials">
+    <a href="https://t.me/+9FuDygWmeJ1mZDdi" target="_blank" title="Telegram">
+      <i class="fab fa-telegram"></i>
+    </a>
+    <a href="https://www.tiktok.com/@dima1945piska" target="_blank" title="TikTok">
+      <i class="fab fa-tiktok"></i>
+    </a>
+    <a href="https://github.com/KaSkEd-SyS" target="_blank" title="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </div>
+
+  <script>
+    const words = "we are mastermind";
+    const waterfallLeft = document.querySelector('.waterfall-left');
+    const waterfallBottom = document.querySelector('.waterfall-bottom');
+
+    // Создадим несколько падающих слов слева
+    for(let i=0; i < 15; i++) {
+      const span = document.createElement('span');
+      span.textContent = words;
+      // случайная задержка старта анимации, чтобы слова не падали синхронно
+      span.style.top = `-${Math.random() * 100}px`;
+      span.style.left = `${Math.random() * 120}px`;
+      span.style.animationDuration = `${8 + Math.random() * 7}s`;
+      span.style.animationDelay = `${Math.random() * 10}s`;
+      waterfallLeft.appendChild(span);
+    }
+
+    // Создадим несколько движущихся слов снизу
+    for(let i=0; i < 15; i++) {
+      const span = document.createElement('span');
+      span.textContent = words;
+      span.style.left = `-${Math.random() * 150}px`;
+      span.style.bottom = `0px`;
+      span.style.animationDuration = `${10 + Math.random() * 8}s`;
+      span.style.animationDelay = `${Math.random() * 10}s`;
+      waterfallBottom.appendChild(span);
+    }
+  </script>
+</body>
+</html>
